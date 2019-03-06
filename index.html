@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+
+<style type="text/css">
+.imagenes {
+	width: 500px;
+	height: 500px;
+}
+</style>
+
+<body>
+
+	<div>Haz click en la diferencia</div>
+
+	<div>
+		<table>
+			<tr>
+				<td><img class="imagenes" id="originales" src="original.jpg" /></td>
+				<td><img class="imagenes" id="diferencias" src="diferencia.jpg" /></td>
+			</tr>
+		</table>
+	</div>
+	<div id="mensajes"></div>
+	<div>Tiempo empleado</div>
+	<div id="time">30</div>
+	<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+	
+	var contadorTime = 30;
+	var tiempoEmpleado = 0;
+	setInterval(tiempo, 1000);
+	function tiempo (){
+		contadorTime--;
+		tiempoEmpleado++;
+		if(contadorTime > 0){
+			$("#time").html(contadorTime);}
+		else {
+			$("#time").html("¡Se te agoto el tiempo!");
+		}
+	}
+	
+$("#diferencias").click(function(e){
+	var offset = $(this).offset();
+	var x = e.pageX - offset.left;
+	var y = e.pageY - offset.top;
+
+	
+$("#mensajes").html("click en x: " + x +"y: " + y);
+
+
+
+	if(x >= 41 && x <= 263 && y>= 30 && y <=195){
+		alert("Felicidades adivinaste la diferencia");
+		contador1=1;
+		}
+	else if(x >= 28 && x <= 161 && y>= 297 && y <=469){
+		alert("Felicidades adivinaste la diferencia");
+		contador2=1;
+		}	
+	else if(x >= 362 && x <= 407 && y>= 346 && y <=410){
+		alert("Felicidades adivinaste la diferencia");
+		contador3=1;
+		}
+	else{
+		alert("Has fallado, fin del juego");
+	}
+	
+	if(contador1 && contador2 && contador3 == 1)
+		{alert("Felicitaciones acertaste las 3 diferencias");
+		document.getElementById("originales").src="senior.jpg";
+		document.getElementById("diferencias").src="nuevaDiferencia.jpg";
+		alert("Has tardado " + tiempoEmpleado + "segundos");
+		}
+
+});	
+
+//ejercicio juego diferencias
+
+//sobre el ejemplo mostrado:
+	
+//1-agregar 2 diferencias mas
+
+//2-felicitar al usuario cuando haya adivinado todas las diferencias
+
+//3-una vez acertadas todas, mostrar una imagen nueva con una diferencia final mas dificil
+
+//4-indicar el tiempo en segundos que ha tardado el usuario en adivinar las diferencias
+
+//5-mostrar un contador de tiempo de cuenta atras de 30 segundos
+//de forma que si el usuario no resuelve todas las diferencias del tiempo establecido 
+//le indicaremos que ha perdido
+
+//6-una vez adivinadas todas las diferencias, pedir al usuario su nombre, el cual
+//guardaremos en un array, junto al tiempo que ha tardado. Tras ello reiniciaremos el juego
+//listando todos los usuarios y el tiempo que tardaron
+
+</script>
+
+
+
+</body>
+</html>
